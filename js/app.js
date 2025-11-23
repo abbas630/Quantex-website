@@ -14,7 +14,7 @@ window.addEventListener('load', () => {
 document.addEventListener('DOMContentLoaded', () => {
     AOS.init({ duration: 800, once: true, offset: 50 });
 
-    // STANDARD TOGGLE MENU
+    // NAV TOGGLE
     const navToggle = document.querySelector('.nav-toggle');
     const mainNav = document.querySelector('.main-nav');
     const closeNavBtn = document.querySelector('.mobile-close-nav');
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Modal Logic
+    // MODAL LOGIC
     const openModalLinks = document.querySelectorAll('[data-modal-target]');
     openModalLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Terminal
+    // TERMINAL
     if (document.getElementById('code-typewriter')) {
         new Typed('#code-typewriter', {
             strings: [
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Clock (Beirut)
+    // CLOCK (Beirut)
     function updateClock() {
         const clockElement = document.getElementById('utc-clock');
         if (clockElement) {
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateClock, 1000);
     updateClock(); 
 
-    // Encryption Effect
+    // ENCRYPTION FORM
     const contactForm = document.getElementById('secure-contact-form');
     const transmitBtn = document.getElementById('transmit-btn');
 
@@ -132,6 +132,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1000);
         });
     }
+
+    // SCROLL AWARE HEADER (Mobile Only)
+    let lastScrollTop = 0;
+    const headerWrapper = document.querySelector('.header-wrapper');
+    
+    window.addEventListener('scroll', () => {
+        if (window.innerWidth >= 768) return; 
+        
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scrolling DOWN -> Hide
+            headerWrapper.classList.add('scroll-hide');
+            mainNav.classList.remove('is-open'); // Safety: Close menu if open
+            navToggle.setAttribute('aria-expanded', 'false');
+        } else {
+            // Scrolling UP -> Show
+            headerWrapper.classList.remove('scroll-hide');
+        }
+        
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, { passive: true });
 });
 
 function initHeroTyping() {
