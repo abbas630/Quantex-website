@@ -5,32 +5,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
     let particlesArray = [];
     
-    // Configuration for "Spider Web" Effect
+    // MOBILE DETECTION
+    const isMobile = window.innerWidth < 768;
+
+    // Configuration
     const config = {
-        particleCount: 100,
-        connectionDistance: 140,
+        particleCount: isMobile ? 20 : 100, // Minimal stars on mobile
+        connectionDistance: isMobile ? 80 : 140,
         mouseDistance: 200,
         baseSpeed: 0.3,
-        color: '255, 255, 255'
+        color: '255, 255, 255' 
     };
 
     // Mouse State
     let mouse = { x: null, y: null };
 
-    window.addEventListener('mousemove', (event) => {
-        mouse.x = event.x;
-        mouse.y = event.y;
-    });
+    // PERFORMANCE: Only track mouse on Desktop
+    if (!isMobile) {
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
 
-    window.addEventListener('mouseout', () => {
-        mouse.x = null;
-        mouse.y = null;
-    });
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+    }
 
     function setCanvasDimensions() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        config.particleCount = window.innerWidth < 768 ? 50 : 100;
+        config.particleCount = window.innerWidth < 768 ? 20 : 100;
         initParticles();
     }
 
@@ -53,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${config.color}, 0.8)`;
+            ctx.fillStyle = `rgba(${config.color}, 0.4)`;
             ctx.fill();
         }
     }
@@ -75,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (distance < config.connectionDistance) {
                     opacityValue = 1 - (distance / config.connectionDistance);
-                    ctx.strokeStyle = `rgba(${config.color}, ${opacityValue * 0.5})`;
+                    ctx.strokeStyle = `rgba(${config.color}, ${opacityValue * 0.2})`;
                     ctx.lineWidth = 1;
                     ctx.beginPath();
                     ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -84,13 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             
-            if (mouse.x != null) {
+            // PERFORMANCE: Skip mouse logic on mobile
+            if (!isMobile && mouse.x != null) {
                 let dxMouse = particlesArray[a].x - mouse.x;
                 let dyMouse = particlesArray[a].y - mouse.y;
                 let distanceMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
                 
                 if (distanceMouse < config.mouseDistance) {
-                    ctx.strokeStyle = `rgba(41, 151, 255, ${1 - distanceMouse/config.mouseDistance})`; 
+                    ctx.strokeStyle = `rgba(41, 151, 255, ${0.2 * (1 - distanceMouse/config.mouseDistance)})`; 
                     ctx.lineWidth = 1.5;
                     ctx.beginPath();
                     ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
