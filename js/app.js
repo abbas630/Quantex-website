@@ -1,9 +1,7 @@
 // js/app.js
 
-// 1. MASTER LOADING LOGIC
 window.addEventListener('load', () => {
     const loaderScreen = document.getElementById('loaderScreen');
-    
     setTimeout(() => {
         loaderScreen.classList.add('fade-out');
         setTimeout(() => {
@@ -14,37 +12,36 @@ window.addEventListener('load', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    // 2. AOS Initialization
     AOS.init({ duration: 800, once: true, offset: 50 });
 
-    // 3. Mobile Menu (UPDATED FOR BOTTOM APP BAR)
-    const mobileMenuTrigger = document.getElementById('mobile-menu-trigger');
+    // STANDARD TOGGLE MENU
+    const navToggle = document.querySelector('.nav-toggle');
     const mainNav = document.querySelector('.main-nav');
     const closeNavBtn = document.querySelector('.mobile-close-nav');
 
-    function toggleMenu() {
-        mainNav.classList.toggle('is-open');
-    }
-
-    if (mobileMenuTrigger && mainNav) {
-        mobileMenuTrigger.addEventListener('click', toggleMenu);
+    if (navToggle && mainNav) {
+        navToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('is-open');
+            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !isExpanded);
+        });
     }
 
     if (closeNavBtn) {
         closeNavBtn.addEventListener('click', () => {
             mainNav.classList.remove('is-open');
+            navToggle.setAttribute('aria-expanded', 'false');
         });
     }
 
-    // Close menu when clicking links
     mainNav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             mainNav.classList.remove('is-open');
+            navToggle.setAttribute('aria-expanded', 'false');
         });
     });
 
-    // 4. Modal Logic
+    // Modal Logic
     const openModalLinks = document.querySelectorAll('[data-modal-target]');
     openModalLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -71,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. Graphite Terminal Typing
+    // Terminal
     if (document.getElementById('code-typewriter')) {
         new Typed('#code-typewriter', {
             strings: [
@@ -94,14 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 6. FEATURES
-    
-    // A. Beirut Clock Logic
+    // Clock (Beirut)
     function updateClock() {
         const clockElement = document.getElementById('utc-clock');
         if (clockElement) {
             const now = new Date();
-            // Target Asia/Beirut specifically
             const timeString = new Intl.DateTimeFormat('en-GB', {
                 timeZone: 'Asia/Beirut',
                 hour: '2-digit',
@@ -109,14 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 second: '2-digit',
                 hour12: false
             }).format(now);
-            
             clockElement.textContent = `${timeString} BEY`;
         }
     }
     setInterval(updateClock, 1000);
     updateClock(); 
 
-    // B. Encryption Submit Effect
+    // Encryption Effect
     const contactForm = document.getElementById('secure-contact-form');
     const transmitBtn = document.getElementById('transmit-btn');
 
