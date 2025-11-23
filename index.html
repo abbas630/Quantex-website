@@ -58,7 +58,7 @@
                 <div class="hamburger-icon"></div>
             </button>
 
-            <nav class="main-nav liquid-glass">
+            <nav class="main-nav">
                 <button class="mobile-close-nav">&times;</button>
                 <ul>
                     <li><a href="#services">Solutions</a></li>
@@ -233,30 +233,40 @@
 
             <h2 class="section-title">Deployment Architecture</h2>
             <div class="timeline-container" data-aos="fade-up">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="liquid-glass" style="padding: 20px;">
+                
+                <details class="timeline-card liquid-glass">
+                    <summary>
+                        <div class="timeline-dot"></div>
                         <span class="timeline-step">Phase 01</span>
                         <h3 class="timeline-title">Data Vectorization</h3>
-                        <p style="color: #aaa;">Converting raw PDFs and SQL into high-dimensional vectors.</p>
+                    </summary>
+                    <div class="timeline-content">
+                        Converting raw PDFs and SQL into high-dimensional vectors for efficient retrieval. We use Pinecone or Weaviate to index your proprietary data securely.
                     </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="liquid-glass" style="padding: 20px;">
+                </details>
+
+                <details class="timeline-card liquid-glass">
+                    <summary>
+                        <div class="timeline-dot"></div>
                         <span class="timeline-step">Phase 02</span>
                         <h3 class="timeline-title">Neural Design</h3>
-                        <p style="color: #aaa;">Configuring the RAG pipeline for zero-hallucination accuracy.</p>
+                    </summary>
+                    <div class="timeline-content">
+                        Configuring the RAG pipeline for zero-hallucination accuracy. We engineer prompts and context windows to ensure the AI only answers from your approved data sources.
                     </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="liquid-glass" style="padding: 20px;">
+                </details>
+
+                <details class="timeline-card liquid-glass">
+                    <summary>
+                        <div class="timeline-dot"></div>
                         <span class="timeline-step">Phase 03</span>
                         <h3 class="timeline-title">Secure Integration</h3>
-                        <p style="color: #aaa;">Deploying the agent via encrypted APIs to WhatsApp or Web.</p>
+                    </summary>
+                    <div class="timeline-content">
+                        Deploying the agent via encrypted APIs to WhatsApp or Web. Full end-to-end testing and hand-off with documentation for your internal team.
                     </div>
-                </div>
+                </details>
+
             </div>
         </section>
 
