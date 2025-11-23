@@ -1,5 +1,5 @@
 /* * QUANTEX AI - ENTERPRISE ENGINEERING THEME
- * VERSION: 5.0 (Compact Glass & Phone Dropdown)
+ * VERSION: 5.1 (Restored Header & Interactive Architecture)
  */
 
 /* ======================================================================
@@ -96,7 +96,6 @@ a:hover { color: var(--neon-blue); }
     transition: none;
 }
 
-/* Re-enabled sheen everywhere as requested */
 .liquid-glass:hover::after {
     animation: sheen 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
@@ -136,6 +135,14 @@ a:hover { color: var(--neon-blue); }
 }
 
 .logo { height: 50px; width: auto; }
+
+.main-nav {
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
 
 .main-nav ul { list-style: none; display: flex; gap: 32px; align-items: center; }
 .main-nav a { font-size: 13px; font-weight: 500; letter-spacing: 0.02em; color: #fff; opacity: 0.8; }
@@ -310,7 +317,7 @@ a:hover { color: var(--neon-blue); }
 .main-footer { margin: 60px 20px 20px 20px; border-radius: 24px; padding: 40px 60px; background: rgba(10, 10, 12, 0.6); backdrop-filter: blur(30px); border: 1px solid rgba(255,255,255,0.08); }
 .footer-links-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .footer-brand-col { display: flex; flex-direction: column; justify-content: flex-start; }
-.footer-logo { height: auto; width: 16px; margin-bottom: 16px; opacity: 0.8; }
+.footer-logo { height: auto; width: 150px; margin-bottom: 16px; opacity: 1; }
 .footer-tagline { font-size: 12px; color: #666; max-width: 200px; }
 .footer-column h4 { color: #fff; font-size: 13px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em;}
 .footer-column ul { list-style: none; }
@@ -350,6 +357,71 @@ a:hover { color: var(--neon-blue); }
 ::-moz-selection { background: rgba(41, 151, 255, 0.3); color: #ffffff; }
 
 /* ======================================================================
+ * 8. TIMELINE & FAQ (INTERACTIVE UPGRADE)
+ * ====================================================================== */
+.timeline-container { position: relative; max-width: 800px; margin: 60px auto; padding-left: 30px; }
+.timeline-container::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--neon-blue), transparent);
+}
+
+/* STYLED DETAILS/SUMMARY FOR TIMELINE */
+details.timeline-card {
+    margin-bottom: 40px;
+    padding: 20px;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    /* Inherits liquid-glass styles */
+}
+
+details.timeline-card summary {
+    outline: none;
+    list-style: none;
+    display: block;
+}
+details.timeline-card summary::-webkit-details-marker { display: none; }
+
+.timeline-dot {
+    position: absolute; left: -49px; top: 20px; width: 16px; height: 16px;
+    background: #000; border: 2px solid var(--neon-blue); border-radius: 50%;
+    box-shadow: 0 0 15px var(--neon-blue);
+}
+
+.timeline-step { font-size: 11px; color: var(--neon-blue); text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px; }
+.timeline-title { color: #fff; font-size: 20px; margin-bottom: 0; display: inline-block; }
+
+/* Expand Icon for Timeline */
+.timeline-card summary::after {
+    content: '+'; 
+    float: right; 
+    font-size: 20px; 
+    color: var(--neon-blue); 
+    transition: transform 0.3s;
+}
+.timeline-card[open] summary::after { transform: rotate(45deg); }
+
+.timeline-content {
+    margin-top: 15px;
+    color: #aaa;
+    font-size: 15px;
+    animation: fadeIn 0.5s ease;
+}
+
+/* FAQ (Already Interactive) */
+.faq-grid { max-width: 800px; margin: 0 auto; }
+.faq-item { margin-bottom: 16px; cursor: pointer; transition: 0.3s; }
+.faq-item[open] { border-color: var(--neon-blue); background: rgba(41, 151, 255, 0.05); }
+.faq-question {
+    padding: 24px; font-size: 16px; font-weight: 600; color: #fff;
+    display: flex; justify-content: space-between; align-items: center; list-style: none;
+}
+.faq-question::-webkit-details-marker { display: none; }
+.faq-icon { color: var(--neon-blue); transition: transform 0.3s; }
+.faq-item[open] .faq-icon { transform: rotate(45deg); }
+.faq-answer { padding: 0 24px 24px 24px; color: var(--color-primary); font-size: 15px; }
+
+/* ======================================================================
  * MOBILE HARDENING PROTOCOL (Re-Engineered)
  * ====================================================================== */
 
@@ -361,7 +433,7 @@ a:hover { color: var(--neon-blue); }
     /* 2. HEADER FIXES */
     .utility-header { display: none; }
     .main-header { padding: 0 20px; justify-content: space-between; }
-    .nav-toggle { display: block !important; } /* Restore hamburger */
+    .nav-toggle { display: block !important; } 
     
     /* Logo Alignment: Left and Bigger */
     .logo-container { width: auto; display: block; }
@@ -369,18 +441,18 @@ a:hover { color: var(--neon-blue); }
 
     /* 3. COMPACT DROP DOWN MENU */
     .main-nav {
-        position: absolute; /* Dropdown relative to header */
+        position: absolute; 
         top: 70px;
         right: 10px;
-        width: 240px; /* Phone sized width */
-        height: auto; /* Auto height */
-        background: rgba(20, 20, 24, 0.95); /* Dark Glass */
+        width: 240px; 
+        height: auto; 
+        background: rgba(20, 20, 24, 0.95); /* Dark Glass on Mobile Only */
         backdrop-filter: blur(30px);
         -webkit-backdrop-filter: blur(30px);
         border: 1px solid rgba(255,255,255,0.1);
         border-radius: 20px;
         padding: 20px;
-        display: none; /* Hidden by default */
+        display: none; 
         flex-direction: column;
         align-items: center;
         box-shadow: 0 20px 50px rgba(0,0,0,0.8);
@@ -399,18 +471,16 @@ a:hover { color: var(--neon-blue); }
         cursor: pointer;
     }
 
-    /* 4. COMPACT CARDS (Not Wall of Text) */
-    .section-padding { padding: 40px 20px; } /* Small padding, not edge-to-edge */
+    /* 4. COMPACT CARDS */
+    .section-padding { padding: 40px 20px; }
     .services-grid { gap: 20px; }
     
     .service-card {
-        padding: 30px 24px; /* Tighter mobile padding */
-        border-radius: 20px; /* Restored curves */
-        /* Keep borders/shadows/glass */
+        padding: 30px 24px; 
+        border-radius: 20px;
     }
     
     .liquid-glass {
-        /* Ensure glass effect is visible on mobile */
         backdrop-filter: saturate(120%) blur(24px);
         -webkit-backdrop-filter: saturate(120%) blur(24px);
         box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.05), 0 10px 30px rgba(0,0,0,0.5);
@@ -431,4 +501,3 @@ a:hover { color: var(--neon-blue); }
     .footer-links-grid { grid-template-columns: 1fr; text-align: center; }
     .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
 }
-
