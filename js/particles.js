@@ -5,28 +5,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
     let particlesArray = [];
     
-    // MOBILE DETECTION
     const isMobile = window.innerWidth < 768;
 
-    // Configuration
     const config = {
-        particleCount: isMobile ? 20 : 100, // Minimal stars on mobile
+        particleCount: isMobile ? 20 : 100,
         connectionDistance: isMobile ? 80 : 140,
         mouseDistance: 200,
         baseSpeed: 0.3,
         color: '255, 255, 255' 
     };
 
-    // Mouse State
     let mouse = { x: null, y: null };
 
-    // PERFORMANCE: Only track mouse on Desktop
     if (!isMobile) {
         window.addEventListener('mousemove', (event) => {
             mouse.x = event.x;
             mouse.y = event.y;
         });
-
         window.addEventListener('mouseout', () => {
             mouse.x = null;
             mouse.y = null;
@@ -90,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             
-            // PERFORMANCE: Skip mouse logic on mobile
             if (!isMobile && mouse.x != null) {
                 let dxMouse = particlesArray[a].x - mouse.x;
                 let dyMouse = particlesArray[a].y - mouse.y;
