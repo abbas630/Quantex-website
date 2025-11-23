@@ -1,5 +1,5 @@
 /* * QUANTEX AI - ENTERPRISE ENGINEERING THEME
- * VERSION: 4.0 (Mobile App Architecture & Edge-to-Edge)
+ * VERSION: 5.0 (Compact Glass & Phone Dropdown)
  */
 
 /* ======================================================================
@@ -85,7 +85,7 @@ a:hover { color: var(--neon-blue); }
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Interactive Sheen (PERFORMANCE: Only on Hover devices) */
+/* Interactive Sheen (Global Enable) */
 .liquid-glass::after {
     content: '';
     position: absolute;
@@ -96,10 +96,9 @@ a:hover { color: var(--neon-blue); }
     transition: none;
 }
 
-@media (hover: hover) {
-    .liquid-glass:hover::after {
-        animation: sheen 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
-    }
+/* Re-enabled sheen everywhere as requested */
+.liquid-glass:hover::after {
+    animation: sheen 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 @keyframes sheen {
@@ -141,7 +140,15 @@ a:hover { color: var(--neon-blue); }
 .main-nav ul { list-style: none; display: flex; gap: 32px; align-items: center; }
 .main-nav a { font-size: 13px; font-weight: 500; letter-spacing: 0.02em; color: #fff; opacity: 0.8; }
 .main-nav a:hover { opacity: 1; color: var(--neon-blue); }
-.mobile-close-nav { display: none; } /* Hidden on desktop */
+.mobile-close-nav { display: none; }
+
+.nav-toggle { display: none; background: none; border: none; padding: 10px; cursor: pointer; }
+.hamburger-icon { width: 24px; height: 2px; background: #fff; position: relative; }
+.hamburger-icon::before, .hamburger-icon::after {
+    content: ''; position: absolute; width: 24px; height: 2px; background: #fff; left: 0; transition: 0.3s;
+}
+.hamburger-icon::before { top: -8px; }
+.hamburger-icon::after { top: 8px; }
 
 /* ======================================================================
  * 4. HERO SECTION
@@ -229,15 +236,13 @@ a:hover { color: var(--neon-blue); }
     transition: 0.5s;
 }
 
-@media (hover: hover) {
-    .cta-primary:hover { 
-        transform: scale(1.05); 
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.4);
-        box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
-    }
-    .cta-primary:hover::after { left: 100%; }
+.cta-primary:hover { 
+    transform: scale(1.05); 
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
 }
+.cta-primary:hover::after { left: 100%; }
 
 .cta-primary.cta-small {
     margin-top: 40px;
@@ -271,9 +276,8 @@ a:hover { color: var(--neon-blue); }
 
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; position: relative; z-index: 2; }
 .service-card { padding: 40px 32px; display: flex; flex-direction: column; }
-@media (hover: hover) {
-    .service-card:hover { transform: translateY(-10px); box-shadow: 0 0 50px rgba(41, 151, 255, 0.15); }
-}
+.service-card:hover { transform: translateY(-10px); box-shadow: 0 0 50px rgba(41, 151, 255, 0.15); }
+
 .service-icon { width: 42px; height: 42px; color: var(--neon-blue); margin-bottom: 24px; }
 .service-card h3 { color: #fff; font-size: 20px; margin-bottom: 12px; }
 .service-card p { color: var(--color-primary); font-size: 15px; margin-bottom: 24px; flex-grow: 1; }
@@ -346,91 +350,82 @@ a:hover { color: var(--neon-blue); }
 ::-moz-selection { background: rgba(41, 151, 255, 0.3); color: #ffffff; }
 
 /* ======================================================================
- * MOBILE HARDENING PROTOCOL (Fixes)
+ * MOBILE HARDENING PROTOCOL (Re-Engineered)
  * ====================================================================== */
-.mobile-app-bar { display: none; } /* Hidden on desktop */
 
 @media (max-width: 768px) {
     /* 1. LAYOUT RESET */
     body, html { overflow-x: hidden; width: 100%; }
     p, h1, h2, h3, li { overflow-wrap: break-word; word-wrap: break-word; max-width: 100%; }
 
-    /* 2. HEADER RESET */
+    /* 2. HEADER FIXES */
     .utility-header { display: none; }
-    .main-header { padding: 0 20px; }
-    .nav-toggle { display: none !important; } /* Killed in favor of bottom bar */
-    .logo-container { width: 100%; display: flex; justify-content: center; }
-    .logo { height: 60px !important; margin-top: 10px; } /* Shrink top logo on mobile */
+    .main-header { padding: 0 20px; justify-content: space-between; }
+    .nav-toggle { display: block !important; } /* Restore hamburger */
+    
+    /* Logo Alignment: Left and Bigger */
+    .logo-container { width: auto; display: block; }
+    .logo { height: 42px !important; width: auto; margin-top: 5px; } 
 
-    /* 3. APP BAR VISIBLE */
-    .mobile-app-bar {
-        display: flex;
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-        right: 20px;
-        background: rgba(15, 15, 20, 0.9);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 100px;
-        padding: 10px;
-        justify-content: space-around;
-        align-items: center;
-        z-index: 10000;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-    }
-    .mobile-tab {
-        background: none; border: none; color: #fff; font-family: var(--font-family-base);
-        font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
-        padding: 10px 20px; border-radius: 50px;
-    }
-    .mobile-tab:active { background: rgba(255,255,255,0.1); }
-
-    /* 4. MAIN MENU OVERLAY */
+    /* 3. COMPACT DROP DOWN MENU */
     .main-nav {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-        background: #000000; /* Solid Void */
-        z-index: 9990;
-        transform: translateY(100%);
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        display: flex; flex-direction: column; justify-content: center;
-        padding: 40px;
-        border-left: none;
+        position: absolute; /* Dropdown relative to header */
+        top: 70px;
+        right: 10px;
+        width: 240px; /* Phone sized width */
+        height: auto; /* Auto height */
+        background: rgba(20, 20, 24, 0.95); /* Dark Glass */
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 20px;
+        padding: 20px;
+        display: none; /* Hidden by default */
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        z-index: 10000;
     }
-    .main-nav.is-open { transform: translateY(0); }
-    .main-nav ul { flex-direction: column; gap: 40px; }
-    .main-nav a { font-size: 24px; }
+    
+    .main-nav.is-open { display: flex; }
+    .main-nav ul { flex-direction: column; gap: 20px; width: 100%; }
+    .main-nav a { font-size: 16px; text-align: center; display: block; width: 100%; }
     
     .mobile-close-nav {
-        display: block; position: absolute; top: 30px; right: 30px;
-        background: none; border: none; color: #fff; font-size: 32px;
+        display: block;
+        align-self: flex-end;
+        background: none; border: none; color: #666; font-size: 24px;
+        margin-bottom: 10px;
+        cursor: pointer;
     }
 
-    /* 5. EDGE-TO-EDGE STACK */
-    .section-padding { padding-left: 0; padding-right: 0; padding-top: 60px; padding-bottom: 60px; }
-    .services-grid { gap: 0; }
-    .service-card, .liquid-glass {
-        border-radius: 0;
-        border-left: none;
-        border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-        margin-bottom: 0;
-        width: 100%;
-    }
-    .service-card:last-child { border-bottom: none; }
-    .liquid-glass { box-shadow: none; } /* Remove heavy shadows on mobile */
+    /* 4. COMPACT CARDS (Not Wall of Text) */
+    .section-padding { padding: 40px 20px; } /* Small padding, not edge-to-edge */
+    .services-grid { gap: 20px; }
     
-    /* 6. CONTENT SIZING */
-    .hero-section h1 { font-size: 36px; padding: 15px 20px; width: 90%; }
+    .service-card {
+        padding: 30px 24px; /* Tighter mobile padding */
+        border-radius: 20px; /* Restored curves */
+        /* Keep borders/shadows/glass */
+    }
+    
+    .liquid-glass {
+        /* Ensure glass effect is visible on mobile */
+        backdrop-filter: saturate(120%) blur(24px);
+        -webkit-backdrop-filter: saturate(120%) blur(24px);
+        box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.05), 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    /* 5. CONTENT SIZING */
+    .hero-section h1 { font-size: 36px; padding: 15px 20px; width: 100%; }
     .placeholder-diagram { height: 220px; }
     .animated-svg { width: 60%; }
-    .code-terminal { min-height: 220px; border-radius: 0; border-left: none; border-right: none; }
+    .code-terminal { min-height: 220px; }
     .terminal-body { font-size: 11px; padding: 15px; }
     .two-column-layout { gap: 40px; }
     
-    /* 7. FOOTER FIXES */
-    .main-footer { margin: 40px 0 100px 0; padding: 40px 20px; border-radius: 0; border-left: none; border-right: none; }
+    /* 6. FOOTER FIXES */
+    .main-footer { margin: 40px 10px 10px 10px; padding: 30px 20px; }
     .footer-brand-col { align-items: center; text-align: center; }
     .footer-logo { height: 24px !important; object-fit: contain; }
     .footer-links-grid { grid-template-columns: 1fr; text-align: center; }
