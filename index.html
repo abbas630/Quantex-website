@@ -24,9 +24,6 @@
 </head>
 <body>
 
-    <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-outline" id="cursor-outline"></div>
-
     <div class="loader-screen" id="loaderScreen">
         <div class="loader-content">
             <img src="images/triangle-logo.png" alt="QUANTEX" class="loader-logo">
@@ -36,7 +33,7 @@
 
     <canvas id="hero-constellation"></canvas>
 
-<div class="header-wrapper">
+    <div class="header-wrapper">
         <div class="utility-header">
             <nav class="utility-nav">
                 <ul>
@@ -57,12 +54,12 @@
                 <img src="images/QUANTEXLOGO.png" alt="Quantex AI" class="logo">
             </div>
             
-            <button class="nav-toggle" aria-expanded="false">
+            <button class="nav-toggle" aria-expanded="false" style="display: none;">
                 <div class="hamburger-icon"></div>
             </button>
 
             <nav class="main-nav">
-                <ul>
+                <button class="mobile-close-nav">&times;</button> <ul>
                     <li><a href="#services">Solutions</a></li>
                     <li><a href="#web-design">Architecture</a></li>
                     <li><a href="#process">Deployment</a></li>
@@ -74,11 +71,8 @@
 
     <main>
         <section class="hero-section">
-            
             <img src="images/triangle-logo.png" alt="" class="hero-background-triangle">
-            
             <h1><span id="typed-hero"></span></h1>
-            
             <a href="#services" class="cta-primary">Initialize Intelligence</a>
         </section>
 
@@ -265,24 +259,6 @@
             </div>
         </section>
 
-        <section class="section-padding">
-            <h2 class="section-title">Technical FAQ</h2>
-            <div class="faq-grid">
-                <details class="faq-item liquid-glass">
-                    <summary class="faq-question">How do you handle privacy? <span class="faq-icon">+</span></summary>
-                    <div class="faq-answer">We prioritize data sovereignty. Your proprietary data never leaves your VPC and is never used to train public models.</div>
-                </details>
-                <details class="faq-item liquid-glass">
-                    <summary class="faq-question">Can agents integrate with APIs? <span class="faq-icon">+</span></summary>
-                    <div class="faq-answer">Yes. Using LangChain function calling, agents can securely query internal APIs to fetch data or trigger workflows.</div>
-                </details>
-                <details class="faq-item liquid-glass">
-                    <summary class="faq-question">Development timeline? <span class="faq-icon">+</span></summary>
-                    <div class="faq-answer">Prototypes take 2-3 weeks. Full enterprise deployment typically ranges from 4-8 weeks.</div>
-                </details>
-            </div>
-        </section>
-
         <section id="contact" class="section-padding">
             <h2 class="section-title">Initialize Contact</h2>
             <form class="contact-form liquid-glass" id="secure-contact-form">
@@ -321,6 +297,18 @@
         </div>
     </footer>
 
+    <nav class="mobile-app-bar">
+        <button class="mobile-tab" id="mobile-menu-trigger">
+            <span class="mobile-tab-label">MENU</span>
+        </button>
+        <button class="mobile-tab" onclick="window.location.href='#services'">
+            <span class="mobile-tab-label">SOLUTIONS</span>
+        </button>
+        <button class="mobile-tab" onclick="window.location.href='#contact'">
+            <span class="mobile-tab-label">CONTACT</span>
+        </button>
+    </nav>
+
     <dialog class="modal" id="modal-chat-agents">
         <div class="modal-content">
             <button class="modal-close-btn" onclick="this.closest('dialog').close()">&times;</button>
@@ -335,7 +323,6 @@
             <a href="#contact" class="cta-primary modal-cta" onclick="this.closest('dialog').close()">Inquire</a>
         </div>
     </dialog>
-    
     <dialog class="modal" id="modal-knowledge-agents">
         <div class="modal-content">
             <button class="modal-close-btn" onclick="this.closest('dialog').close()">&times;</button>
@@ -350,7 +337,6 @@
             <a href="#contact" class="cta-primary modal-cta" onclick="this.closest('dialog').close()">Inquire</a>
         </div>
     </dialog>
-    
     <dialog class="modal" id="modal-custom-apps">
         <div class="modal-content">
             <button class="modal-close-btn" onclick="this.closest('dialog').close()">&times;</button>
@@ -365,7 +351,6 @@
             <a href="#contact" class="cta-primary modal-cta" onclick="this.closest('dialog').close()">Inquire</a>
         </div>
     </dialog>
-
     <dialog class="modal" id="modal-web-design">
         <div class="modal-content">
             <button class="modal-close-btn" onclick="this.closest('dialog').close()">&times;</button>
