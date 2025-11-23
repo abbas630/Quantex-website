@@ -1,5 +1,5 @@
 /* * QUANTEX AI - ENTERPRISE ENGINEERING THEME
- * VERSION: 5.1 (Restored Header & Interactive Architecture)
+ * VERSION: 5.2 (Scroll-Aware Header)
  */
 
 /* ======================================================================
@@ -108,7 +108,17 @@ a:hover { color: var(--neon-blue); }
 /* ======================================================================
  * 3. HEADER & NAV
  * ====================================================================== */
-.header-wrapper { position: sticky; top: 0; z-index: 9999; }
+.header-wrapper { 
+    position: sticky; 
+    top: 0; 
+    z-index: 9999; 
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1); /* Smooth slide */
+}
+
+/* HIDDEN STATE FOR SCROLL DOWN */
+.header-wrapper.scroll-hide {
+    transform: translateY(-100%);
+}
 
 .utility-header {
     background: #0a0a0a;
@@ -134,8 +144,9 @@ a:hover { color: var(--neon-blue); }
     border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-.logo { height: 50px; width: auto; }
+.logo { height: 190px; width: auto; }
 
+/* DESKTOP NAV: Clean, Transparent (No Box) */
 .main-nav {
     background: transparent;
     backdrop-filter: none;
@@ -317,7 +328,7 @@ a:hover { color: var(--neon-blue); }
 .main-footer { margin: 60px 20px 20px 20px; border-radius: 24px; padding: 40px 60px; background: rgba(10, 10, 12, 0.6); backdrop-filter: blur(30px); border: 1px solid rgba(255,255,255,0.08); }
 .footer-links-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .footer-brand-col { display: flex; flex-direction: column; justify-content: flex-start; }
-.footer-logo { height: auto; width: 150px; margin-bottom: 16px; opacity: 1; }
+.footer-logo { height: 18px; width: auto; margin-bottom: 16px; opacity: 0.8; }
 .footer-tagline { font-size: 12px; color: #666; max-width: 200px; }
 .footer-column h4 { color: #fff; font-size: 13px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em;}
 .footer-column ul { list-style: none; }
@@ -372,7 +383,6 @@ details.timeline-card {
     cursor: pointer;
     list-style: none;
     position: relative;
-    /* Inherits liquid-glass styles */
 }
 
 details.timeline-card summary {
@@ -391,7 +401,6 @@ details.timeline-card summary::-webkit-details-marker { display: none; }
 .timeline-step { font-size: 11px; color: var(--neon-blue); text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px; }
 .timeline-title { color: #fff; font-size: 20px; margin-bottom: 0; display: inline-block; }
 
-/* Expand Icon for Timeline */
 .timeline-card summary::after {
     content: '+'; 
     float: right; 
@@ -408,7 +417,7 @@ details.timeline-card summary::-webkit-details-marker { display: none; }
     animation: fadeIn 0.5s ease;
 }
 
-/* FAQ (Already Interactive) */
+/* FAQ */
 .faq-grid { max-width: 800px; margin: 0 auto; }
 .faq-item { margin-bottom: 16px; cursor: pointer; transition: 0.3s; }
 .faq-item[open] { border-color: var(--neon-blue); background: rgba(41, 151, 255, 0.05); }
@@ -435,7 +444,6 @@ details.timeline-card summary::-webkit-details-marker { display: none; }
     .main-header { padding: 0 20px; justify-content: space-between; }
     .nav-toggle { display: block !important; } 
     
-    /* Logo Alignment: Left and Bigger */
     .logo-container { width: auto; display: block; }
     .logo { height: 42px !important; width: auto; margin-top: 5px; } 
 
