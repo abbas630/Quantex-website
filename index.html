@@ -273,9 +273,11 @@
         <section id="contact" class="section-padding">
             <h2 class="section-title">Initialize Contact</h2>
             <form class="contact-form liquid-glass" id="secure-contact-form">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Work Email" required>
-                <textarea rows="5" placeholder="Project Requirements..." required></textarea>
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Work Email" required>
+                <textarea name="message" rows="5" placeholder="Project Requirements..." required></textarea>
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
                 <button type="submit" class="cta-primary" id="transmit-btn" style="width:100%">Transmit Message</button>
             </form>
         </section>
@@ -371,3 +373,4 @@
     <script src="js/particles.js" defer></script>
 </body>
 </html>
+
