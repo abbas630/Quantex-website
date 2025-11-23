@@ -219,6 +219,8 @@ a:hover { color: var(--neon-blue); }
     border-top: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 100px;
     padding: 20px 50px;
+    min-width: 14em;
+    text-align: center;
     box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
@@ -546,5 +548,6 @@ details.timeline-card summary::-webkit-details-marker { display: none; }
 .social-link:hover img {
     opacity: 1;
 }
+
 
 
