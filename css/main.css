@@ -221,6 +221,7 @@ a:hover { color: var(--neon-blue); }
     padding: 20px 50px;
     min-width: 14em;
     text-align: center;
+    min-height: calc(1.1em + 40px);
     box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
@@ -497,7 +498,7 @@ details.timeline-card summary::-webkit-details-marker { display: none; }
     }
     
     /* 5. CONTENT SIZING */
-    .hero-section h1 { font-size: 36px; padding: 15px 20px; width: 100%; }
+    .hero-section h1 { font-size: 36px; padding: 15px 20px; width: 100%; min-width: 0; min-height: auto; display: block; }
     .placeholder-diagram { height: 220px; }
     .animated-svg { width: 60%; }
     .code-terminal { min-height: 220px; }
@@ -548,6 +549,7 @@ details.timeline-card summary::-webkit-details-marker { display: none; }
 .social-link:hover img {
     opacity: 1;
 }
+
 
 
 
