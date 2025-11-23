@@ -18,22 +18,31 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. AOS Initialization
     AOS.init({ duration: 800, once: true, offset: 50 });
 
-    // 3. Mobile Menu
-    const navToggle = document.querySelector('.nav-toggle');
+    // 3. Mobile Menu (UPDATED FOR BOTTOM APP BAR)
+    const mobileMenuTrigger = document.getElementById('mobile-menu-trigger');
     const mainNav = document.querySelector('.main-nav');
-    if (navToggle && mainNav) {
-        navToggle.addEventListener('click', () => {
-            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-            navToggle.setAttribute('aria-expanded', !isExpanded);
-            mainNav.classList.toggle('is-open');
-        });
-        mainNav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('is-open');
-                navToggle.setAttribute('aria-expanded', 'false');
-            });
+    const closeNavBtn = document.querySelector('.mobile-close-nav');
+
+    function toggleMenu() {
+        mainNav.classList.toggle('is-open');
+    }
+
+    if (mobileMenuTrigger && mainNav) {
+        mobileMenuTrigger.addEventListener('click', toggleMenu);
+    }
+
+    if (closeNavBtn) {
+        closeNavBtn.addEventListener('click', () => {
+            mainNav.classList.remove('is-open');
         });
     }
+
+    // Close menu when clicking links
+    mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mainNav.classList.remove('is-open');
+        });
+    });
 
     // 4. Modal Logic
     const openModalLinks = document.querySelectorAll('[data-modal-target]');
@@ -85,15 +94,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 6. IMMERSIVE FEATURES
-
-    // A. Live UTC Clock
+    // 6. FEATURES
+    
+    // A. Beirut Clock Logic
     function updateClock() {
         const clockElement = document.getElementById('utc-clock');
         if (clockElement) {
             const now = new Date();
-            const timeString = now.toISOString().split('T')[1].split('.')[0];
-            clockElement.textContent = `${timeString} UTC`;
+            // Target Asia/Beirut specifically
+            const timeString = new Intl.DateTimeFormat('en-GB', {
+                timeZone: 'Asia/Beirut',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            }).format(now);
+            
+            clockElement.textContent = `${timeString} BEY`;
         }
     }
     setInterval(updateClock, 1000);
@@ -106,18 +123,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm && transmitBtn) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault(); 
-            
             const originalText = transmitBtn.innerText;
-            
             transmitBtn.innerText = "ENCRYPTING...";
-            
             setTimeout(() => {
                 transmitBtn.innerText = "TRANSMITTING...";
-                
                 setTimeout(() => {
                     transmitBtn.innerText = "PACKET SENT";
                     transmitBtn.classList.add('success');
-                    
                     setTimeout(() => {
                         transmitBtn.innerText = originalText;
                         transmitBtn.classList.remove('success');
