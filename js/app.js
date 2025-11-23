@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // MODAL LOGIC
+    // MODALS
     const openModalLinks = document.querySelectorAll('[data-modal-target]');
     openModalLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -109,31 +109,58 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateClock, 1000);
     updateClock(); 
 
-    // ENCRYPTION FORM
+    // ==================================================
+    // REAL FORM SUBMISSION LOGIC
+    // ==================================================
     const contactForm = document.getElementById('secure-contact-form');
     const transmitBtn = document.getElementById('transmit-btn');
+
+    // >>>>> CHANGE THIS EMAIL <<<<<
+    const RECIPIENT_EMAIL = "abbas@quantexai.info"; 
 
     if (contactForm && transmitBtn) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault(); 
+            
             const originalText = transmitBtn.innerText;
+            
+            // 1. Visual Feedback Start
             transmitBtn.innerText = "ENCRYPTING...";
-            setTimeout(() => {
-                transmitBtn.innerText = "TRANSMITTING...";
+            transmitBtn.style.opacity = "0.8";
+
+            // 2. Gather Data
+            const formData = new FormData(contactForm);
+
+            // 3. Send Data to FormSubmit.co
+            fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 4. Visual Feedback Success
+                transmitBtn.innerText = "PACKET SENT";
+                transmitBtn.classList.add('success');
+                transmitBtn.style.opacity = "1";
+                
+                // 5. Reset Form
                 setTimeout(() => {
-                    transmitBtn.innerText = "PACKET SENT";
-                    transmitBtn.classList.add('success');
-                    setTimeout(() => {
-                        transmitBtn.innerText = originalText;
-                        transmitBtn.classList.remove('success');
-                        contactForm.reset();
-                    }, 3000);
-                }, 1500);
-            }, 1000);
+                    transmitBtn.innerText = originalText;
+                    transmitBtn.classList.remove('success');
+                    contactForm.reset();
+                }, 4000);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                transmitBtn.innerText = "ERROR - RETRY";
+                setTimeout(() => {
+                    transmitBtn.innerText = originalText;
+                }, 3000);
+            });
         });
     }
 
-    // SCROLL AWARE HEADER (Mobile Only)
+    // SCROLL AWARE HEADER
     let lastScrollTop = 0;
     const headerWrapper = document.querySelector('.header-wrapper');
     
@@ -143,12 +170,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
         if (scrollTop > lastScrollTop && scrollTop > 100) {
-            // Scrolling DOWN -> Hide
             headerWrapper.classList.add('scroll-hide');
-            mainNav.classList.remove('is-open'); // Safety: Close menu if open
+            mainNav.classList.remove('is-open'); 
             navToggle.setAttribute('aria-expanded', 'false');
         } else {
-            // Scrolling UP -> Show
             headerWrapper.classList.remove('scroll-hide');
         }
         
