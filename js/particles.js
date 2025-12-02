@@ -1,3 +1,4 @@
+/*
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('hero-constellation');
     if (!canvas) return;
@@ -116,3 +117,4 @@ document.addEventListener('DOMContentLoaded', () => {
     setCanvasDimensions();
     animate();
 });
+*/
