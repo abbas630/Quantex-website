@@ -1,18 +1,17 @@
-
-/* * QUANTEX AI - ONYX & SLATE THEME (Phase 3)
- * Strategy: Stealth Wealth, Performance First
+/* * QUANTEX AI - ONYX & SLATE THEME (Final Candidate)
+ * Strategy: Stealth Wealth, Mobile Conversion Focused
  */
 
 :root {
     /* "Stealth Wealth" Palette */
-    --bg-void: #000000;       /* True OLED Black */
-    --bg-surface: #0a0a0a;    /* Slightly lighter for contrast */
+    --bg-void: #000000;       
+    --bg-surface: #0a0a0a;    
     --text-primary: #ffffff;
     --text-secondary: #a1a1aa;
     
     /* Accents */
-    --accent-blue: #2997ff;   /* Action Color */
-    --border-slate: #334155;  /* Structural Grey */
+    --accent-blue: #2997ff;   
+    --border-slate: #334155;  
     
     /* "Fast Glass" - No Blur, High Opacity */
     --glass-fast: rgba(20, 20, 24, 0.95);
@@ -28,10 +27,15 @@ body {
     background-color: var(--bg-void);
     color: var(--text-primary);
     font-family: var(--font-base);
-    font-size: 18px; /* Bumped for legibility */
+    font-size: 18px; /* High Readability */
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    padding-bottom: 60px; /* Space for Sticky Bar on Mobile */
+}
+
+@media (min-width: 769px) {
+    body { padding-bottom: 0; }
 }
 
 a { text-decoration: none; color: inherit; transition: 0.2s; }
@@ -42,7 +46,7 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 .section-padding { padding: 100px var(--spacing-container); max-width: 1200px; margin: 0 auto; }
 .full-width { width: 100%; display: block; }
 
-/* The "Fast Glass" Card - Optimized for Mobile FPS */
+/* The "Fast Glass" Card */
 .fast-glass {
     background: var(--glass-fast);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -61,7 +65,7 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     background: var(--accent-blue);
     color: #fff;
     padding: 16px 32px;
-    border-radius: 6px; /* Squarer, more business-like */
+    border-radius: 6px;
     font-weight: 600;
     font-size: 16px;
     display: inline-block;
@@ -70,10 +74,7 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     cursor: pointer;
 }
 
-.cta-primary:hover {
-    background: #1a80e0;
-}
-
+.cta-primary:hover { background: #1a80e0; }
 .cta-primary.cta-small { padding: 10px 20px; font-size: 14px; }
 .cta-text { color: var(--text-secondary); margin-left: 20px; font-weight: 500; }
 .cta-text:hover { color: #fff; }
@@ -85,7 +86,7 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     display: flex; justify-content: space-between; align-items: center;
     padding: 20px var(--spacing-container);
     position: sticky; top: 0; z-index: 100;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.95);
     border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
@@ -98,14 +99,14 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 .nav-toggle, .mobile-close-nav { display: none; }
 
 /* =========================================
-   HERO (Static & Bold)
+   HERO
    ========================================= */
 .hero-section {
     min-height: 80vh;
     display: flex; align-items: center;
     padding: 0 var(--spacing-container);
     position: relative;
-    background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 70%); /* Subtle depth */
+    background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 70%);
 }
 
 .hero-title {
@@ -135,7 +136,7 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     white-space: nowrap;
 }
 
-.marquee-wrapper { display: inline-block; animation: scroll 20s linear infinite; }
+.marquee-wrapper { display: inline-block; animation: scroll 25s linear infinite; }
 .ticker-item { color: var(--text-secondary); font-weight: 600; text-transform: uppercase; font-size: 14px; letter-spacing: 1px; }
 .ticker-separator { margin: 0 30px; color: #333; }
 
@@ -166,35 +167,74 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 .trust-statement { text-align: center; font-style: italic; color: var(--text-secondary); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
 
 .center-align { display: flex; flex-direction: column; align-items: center; text-align: center; }
-.pricing-card { max-width: 400px; width: 100%; text-align: left; }
-.pricing-card .price { font-size: 32px; color: var(--accent-blue); font-weight: 700; margin: 10px 0 20px 0; }
+.pricing-card { max-width: 450px; width: 100%; text-align: left; }
+.pricing-card .price { font-size: 28px; color: #fff; font-weight: 700; margin: 10px 0 5px 0; }
 .price-features { list-style: none; margin-bottom: 30px; }
-.price-features li { margin-bottom: 12px; color: var(--text-secondary); }
+.price-features li { margin-bottom: 12px; color: var(--text-secondary); display: flex; gap: 10px; }
 
 /* =========================================
    CONTACT & FOOTER
    ========================================= */
 .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-.contact-form input, .contact-form textarea {
-    width: 100%; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15);
-    padding: 14px; border-radius: 6px; color: #fff; margin-bottom: 20px;
-    font-family: inherit; font-size: 16px;
+
+/* Unified Input/Select Styling */
+.contact-form input, 
+.contact-form textarea, 
+.contact-form select {
+    width: 100%; 
+    background: rgba(0,0,0,0.5); 
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 14px; 
+    border-radius: 6px; 
+    color: #fff; 
+    margin-bottom: 20px;
+    font-family: inherit; 
+    font-size: 16px;
+    appearance: none; /* Clean up dropdown on Safari/Mobile */
+    -webkit-appearance: none;
 }
+
+/* Custom Arrow for Select (Optional - keeps it minimal) */
+.contact-form select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+}
+
 .contact-form label { display: block; margin-bottom: 8px; font-size: 14px; color: var(--text-secondary); }
 
-.main-footer { padding: 40px var(--spacing-container); border-top: 1px solid rgba(255,255,255,0.05); margin-top: 60px; text-align: center; color: #444; font-size: 14px; }
+.main-footer { 
+    padding: 40px var(--spacing-container); 
+    border-top: 1px solid rgba(255,255,255,0.05); 
+    margin-top: 60px; 
+    text-align: center; 
+    color: #444; 
+    font-size: 14px; 
+}
+.privacy-link { color: #333; margin-left: 20px; font-size: 12px; }
+.privacy-link:hover { color: #666; text-decoration: underline; }
 
 /* =========================================
    MOBILE / RESPONSIVE
    ========================================= */
+/* Mobile Sticky Bar - GUARANTEED VISIBILITY */
 .sticky-whatsapp-bar {
-    position: fixed; bottom: 0; left: 0; width: 100%;
-    background: #25D366; color: #fff; padding: 12px;
-    text-align: center; font-weight: 600; z-index: 9999;
-    display: none; box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%;
+    background: #25D366; 
+    color: #fff; 
+    padding: 14px;
+    text-align: center; 
+    font-weight: 600; 
+    z-index: 9999;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.5);
+    display: none; /* Hidden on Desktop */
 }
-.sticky-whatsapp-bar a { display: flex; align-items: center; justify-content: center; gap: 10px; }
-.wa-icon img { width: 24px; height: 24px; }
+.sticky-whatsapp-bar a { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 16px; }
+.wa-icon img { width: 24px; height: 24px; display: block; }
 
 @media (max-width: 768px) {
     /* Layout */
@@ -220,8 +260,9 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     .main-nav ul { flex-direction: column; align-items: flex-start; gap: 20px; }
     
     /* Elements */
-    .sticky-whatsapp-bar { display: block; } /* Only show on mobile */
-    .mobile-close-nav { display: none; } /* Simplified nav logic */
+    .sticky-whatsapp-bar { display: block; } /* Visible on Mobile */
+    .mobile-close-nav { display: none; }
     .hero-actions { display: flex; flex-direction: column; gap: 20px; }
     .cta-text { margin-left: 0; }
+}
 }
