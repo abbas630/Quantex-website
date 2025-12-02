@@ -3,55 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantex AI Solutions | Engineered Intelligence</title>
-    <meta name="description" content="Quantex provides expert AI agents, secure enterprise knowledge systems (RAG), and custom React/Next.js web architecture.">
+    <title>Quantex AI | Automated Sales & Support</title>
+    <meta name="description" content="AI Solutions for Lebanese Enterprise. Automate your customer support and sales on WhatsApp.">
     
-    <meta property="og:title" content="Quantex AI | Enterprise Intelligence">
-    <meta property="og:description" content="Secure enterprise knowledge systems and autonomous agents.">
-    <meta property="og:image" content="images/QUANTEXLOGO.png">
-    <meta property="og:type" content="website">
-
     <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-    <link rel="apple-touch-icon" href="images/favicon-32x32.png">
-
     <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
-    <div class="loader-screen" id="loaderScreen">
-        <div class="loader-content">
-            <img src="images/triangle-logo.png" alt="QUANTEX" class="loader-logo">
-            <div class="loader-text">INITIALIZING QUANTEX CORE...</div>
-        </div>
-    </div>
-
-    <canvas id="hero-constellation"></canvas>
-
     <div class="header-wrapper">
-        <div class="utility-header">
-            <nav class="utility-nav">
-                <ul>
-                    <li>
-                        <a href="#" class="status-link">
-                            <span class="status-led"></span>
-                            System Online
-                        </a>
-                    </li>
-                    <li><a href="#" id="utc-clock">Loading Time...</a></li>
-                    <li><a href="#">Client Portal</a></li>
-                </ul>
-            </nav>
-        </div>
-
         <header class="main-header">
             <div class="logo-container">
-                <img src="images/QUANTEXLOGO.png" alt="Quantex AI" class="logo" href="https://www.quantexai.info">
+                <img src="images/QUANTEXLOGO.png" alt="Quantex AI" class="logo">
             </div>
             
             <button class="nav-toggle" aria-expanded="false">
@@ -61,10 +26,10 @@
             <nav class="main-nav">
                 <button class="mobile-close-nav">&times;</button>
                 <ul>
-                    <li><a href="#services">Solutions</a></li>
-                    <li><a href="#web-design">Architecture</a></li>
-                    <li><a href="#process">Deployment</a></li>
-                    <li><a href="#contact" class="cta-primary cta-small">Start Project</a></li>
+                    <li><a href="#solutions">Solutions</a></li>
+                    <li><a href="#results">Results</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact" class="cta-primary cta-small">Book Strategy Call</a></li>
                 </ul>
             </nav>
         </header>
@@ -72,314 +37,144 @@
 
     <main>
         <section class="hero-section">
-            <img src="images/triangle-logo.png" alt="" class="hero-background-triangle">
-            <h1><span id="typed-hero"></span></h1>
-            <a href="#services" class="cta-primary">Initialize Intelligence</a>
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="hero-title">Automate Your<br>Business Operations.</h1>
+                <p class="hero-sub">Secure AI solutions for Lebanese Enterprise. We turn your PDFs and Price Lists into active 24/7 sales agents.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="cta-primary">Book Strategy Call</a>
+                    <a href="https://wa.me/961XXXXXXXX" class="cta-text">Chat on WhatsApp &rarr;</a>
+                </div>
+            </div>
         </section>
 
-        <div class="tech-stack-section">
+        <div class="ticker-section">
             <div class="marquee-wrapper">
-                <span class="tech-logo-item">OpenAI GPT-4</span>
-                <span class="tech-logo-item">Llama 3</span>
-                <span class="tech-logo-item">Python</span>
-                <span class="tech-logo-item">TensorFlow</span>
-                <span class="tech-logo-item">Pinecone</span>
-                <span class="tech-logo-item">LangChain</span>
-                <span class="tech-logo-item">Next.js 14</span>
-                <span class="tech-logo-item">React</span>
-                <span class="tech-logo-item">Docker</span>
-                <span class="tech-logo-item">AWS</span>
-                <span class="tech-logo-item">OpenAI GPT-4</span>
-                <span class="tech-logo-item">Llama 3</span>
-                <span class="tech-logo-item">Python</span>
-                <span class="tech-logo-item">TensorFlow</span>
-                <span class="tech-logo-item">Pinecone</span>
-                <span class="tech-logo-item">LangChain</span>
-                <span class="tech-logo-item">Next.js 14</span>
+                <span class="ticker-item">Eliminate Missed Calls</span>
+                <span class="ticker-separator">&bull;</span>
+                <span class="ticker-item">Instant Customer Support</span>
+                <span class="ticker-separator">&bull;</span>
+                <span class="ticker-item">Automated Appointment Booking</span>
+                <span class="ticker-separator">&bull;</span>
+                <span class="ticker-item">Reduce Overhead Costs</span>
+                <span class="ticker-separator">&bull;</span>
+                <span class="ticker-item">24/7 Sales Agent</span>
+                <span class="ticker-separator">&bull;</span>
+                <span class="ticker-item">Eliminate Missed Calls</span>
+                <span class="ticker-separator">&bull;</span>
+                <span class="ticker-item">Instant Customer Support</span>
             </div>
         </div>
 
-        <section class="section-padding" data-aos="fade-up">
-            <div class="liquid-glass" style="padding: 60px 40px; text-align: center; max-width: 1000px; margin: 0 auto;">
-                <h2 style="color: var(--neon-blue); font-size: 14px; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 24px;">
-                    Quantex AI Solutions
-                </h2>
-                <p style="font-size: clamp(18px, 2vw, 24px); line-height: 1.6; color: #e0e0e0; font-weight: 400;">
-                    Quantex is a premier AI engineering firm bridging the gap between Large Language Models and enterprise utility. Specializing in secure RAG pipelines and autonomous agents, we transform static data into active intelligence. We don't just wrap APIs; we build sovereign, encrypted infrastructure that integrates seamlessly with your business logic. 
-                </p>
-                <p style="margin-top: 24px; color: #888; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">
-                    Operating out of Beirut &bull; Deploying Globally
-                </p>
+        <section id="solutions" class="section-padding">
+            <div class="section-header">
+                <h2 class="section-title">Core Solutions</h2>
+                <p class="section-subtitle">We don't sell code. We sell efficiency.</p>
             </div>
-        </section>
-
-        <section id="services" class="section-padding">
-            <div class="ambient-glow" style="top: -10%; left: -10%;"></div>
-            
-            <h2 class="section-title">Core Engineering Modules</h2>
-            <p class="section-subtitle">Precision solutions across the AI lifecycle.</p>
 
             <div class="services-grid">
-                <article class="service-card liquid-glass" data-aos="fade-up">
-                    <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                    <h3>AI Chat Agents</h3>
-                    <p>GPT-4 & Gemini 3.0 powered agents for WhatsApp and Web. Multi-turn memory and autonomous function calling.</p>
-                    <a href="#" class="service-link" onclick="document.getElementById('modal-chat-agents').showModal(); return false;">View Specs &rarr;</a>
+                <article class="service-card fast-glass" data-aos="fade-up">
+                    <div class="card-header">
+                        <span class="service-label">Automation</span>
+                        <h3>Intelligent Chatbots</h3>
+                    </div>
+                    <p>Connects directly to WhatsApp Business. It qualifies leads, answers FAQs from your documents, and books appointments while you sleep.</p>
                 </article>
 
-                <article class="service-card liquid-glass" style="display: none;" data-aos="fade-up">
-                    <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
-                    <h3>Enterprise Knowledge</h3>
-                    <p>Secure RAG pipelines. Connect AI to your local SQL, PDFs, and internal wikis with end-to-end encryption.</p>
-                    <a href="#" class="service-link" onclick="document.getElementById('modal-knowledge-agents').showModal(); return false;">View Specs &rarr;</a>
+                <article class="service-card fast-glass" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-header">
+                        <span class="service-label">Integration</span>
+                        <h3>Instant Business Knowledge</h3>
+                    </div>
+                    <p>Stop searching through folders. Our AI learns every PDF, Excel sheet, and contract in your database to answer internal questions instantly.</p>
                 </article>
 
-                <article class="service-card liquid-glass" data-aos="fade-up">
-                    <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
-                    <h3>Custom Business Apps</h3>
-                    <p>Bespoke CRMs and workflow automation tools engineered with Python and React for your specific logic.</p>
-                    <a href="#" class="service-link" onclick="document.getElementById('modal-custom-apps').showModal(); return false;">View Specs &rarr;</a>
-                </article>
-                
-                <article class="service-card liquid-glass" data-aos="fade-up">
-                    <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                    <h3>Web Architecture</h3>
-                    <p>High-performance Next.js and Three.js applications. 99+ Core Web Vitals and fluid animations.</p>
-                    <a href="#" class="service-link" onclick="document.getElementById('modal-web-design').showModal(); return false;">View Specs &rarr;</a>
+                <article class="service-card fast-glass" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-header">
+                        <span class="service-label">Digital Presence</span>
+                        <h3>High-Performance Web</h3>
+                    </div>
+                    <p>SEO-optimized architectures designed for the Lebanese market. Fast loading on mobile data, clean aesthetics, and high conversion rates.</p>
                 </article>
             </div>
+        </section>
 
-            <div class="metrics-wrapper" data-aos="zoom-in">
-                <div>
-                    <span class="metric-number">99.9%</span>
-                    <span class="metric-label">System Uptime</span>
+        <section id="results" class="section-padding">
+            <div class="trust-panel fast-glass" data-aos="fade-up">
+                <div class="trust-grid">
+                    <div class="trust-metric">
+                        <span class="metric-value">100%</span>
+                        <span class="metric-label">Response Rate</span>
+                    </div>
+                    <div class="trust-metric">
+                        <span class="metric-value">0s</span>
+                        <span class="metric-label">Wait Time</span>
+                    </div>
+                    <div class="trust-metric">
+                        <span class="metric-value">24/7</span>
+                        <span class="metric-label">Operation</span>
+                    </div>
                 </div>
-                <div>
-                    <span class="metric-number">&lt;100ms</span>
-                    <span class="metric-label">Query Latency</span>
-                </div>
-                <div>
-                    <span class="metric-number">AES-256</span>
-                    <span class="metric-label">Encryption Standard</span>
+                <div class="trust-statement">
+                    <p>"Quantex transformed our customer service. We no longer miss leads after 6 PM."</p>
                 </div>
             </div>
         </section>
 
-        <section id="web-design" class="section-padding">
-            <div class="ambient-glow purple" style="bottom: -10%; right: -10%;"></div>
-
-            <div class="two-column-layout">
-                <div class="text-content" data-aos="fade-right">
-                    <h2 class="section-title-left">Immersive Architecture</h2>
-                    <p class="section-text-large">We build custom, high-performance web architectures that combine stunning aesthetics with robust engineering.</p>
-                    <ul>
-                        <li><strong>Modern Stack:</strong> React, Next.js, and Vue.</li>
-                        <li><strong>3D Integration:</strong> WebGL and Three.js.</li>
-                        <li><strong>SEO Optimized:</strong> Engineered for visibility.</li>
-                    </ul>
-                    <a href="#" class="cta-primary cta-small" onclick="document.getElementById('modal-web-design').showModal(); return false;">View Stack</a>
-                </div>
-
-                <div class="visual-content" data-aos="fade-left">
-                    <div class="placeholder-diagram liquid-glass">
-                        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="animated-svg">
-                            <g stroke="rgba(255,255,255,0.2)" stroke-width="1">
-                                <line x1="100" y1="100" x2="50" y2="50" class="neural-line" />
-                                <line x1="100" y1="100" x2="150" y2="50" class="neural-line" style="animation-delay: 0.5s"/>
-                                <line x1="100" y1="100" x2="50" y2="150" class="neural-line" style="animation-delay: 1s"/>
-                                <line x1="100" y1="100" x2="150" y2="150" class="neural-line" style="animation-delay: 1.5s"/>
-                            </g>
-                            <circle r="2" fill="#2997ff"><animateMotion dur="2s" repeatCount="indefinite" path="M100,100 L50,50" /></circle>
-                            <circle cx="100" cy="100" r="12" fill="#1a1a1a" stroke="#2997ff" stroke-width="2" />
-                            <circle cx="50" cy="50" r="8" fill="#1a1a1a" stroke="#fff" stroke-width="1.5" />
-                            <circle cx="150" cy="50" r="8" fill="#1a1a1a" stroke="#fff" stroke-width="1.5" />
-                            <circle cx="50" cy="150" r="8" fill="#1a1a1a" stroke="#fff" stroke-width="1.5" />
-                            <circle cx="150" cy="150" r="8" fill="#1a1a1a" stroke="#fff" stroke-width="1.5" />
-                        </svg>
-                        <p style="margin-top: 20px; font-size: 12px; letter-spacing: 2px;">REACT NEURAL NETWORK</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-padding">
-            <div class="two-column-layout">
-                <div class="visual-content" data-aos="fade-right">
-                    <div class="code-terminal liquid-glass">
-                        <div class="terminal-header">
-                            <div class="terminal-dot red"></div>
-                            <div class="terminal-dot yellow"></div>
-                            <div class="terminal-dot green"></div>
-                            <span class="terminal-title">terminal — zsh</span>
-                        </div>
-                        <div class="terminal-body">
-                            <span id="code-typewriter" style="white-space: pre;"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-content" data-aos="fade-left">
-                    <h2 class="section-title-left">Transparent Code</h2>
-                    <p class="section-text-large">We don't hide behind black boxes. We write clean, modular, and documented code that integrates seamlessly into your stack.</p>
-                    <ul style="margin-top:20px">
-                        <li><strong>Python Native:</strong> Built on LangChain.</li>
-                        <li><strong>Secure:</strong> Type-safe and Encrypted.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="process" class="section-padding">
-            <div class="ambient-glow" style="top: 20%; left: 30%; width: 400px; height: 400px; opacity: 0.4;"></div>
-
-            <h2 class="section-title">Deployment Architecture</h2>
-            <div class="timeline-container" data-aos="fade-up">
-                
-                <details class="timeline-card liquid-glass">
-                    <summary>
-                        <div class="timeline-dot"></div>
-                        <span class="timeline-step">Phase 01</span>
-                        <h3 class="timeline-title">Data Vectorization</h3>
-                    </summary>
-                    <div class="timeline-content">
-                        Converting raw PDFs and SQL into high-dimensional vectors for efficient retrieval. We use Pinecone or Weaviate to index your proprietary data securely.
-                    </div>
-                </details>
-
-                <details class="timeline-card liquid-glass">
-                    <summary>
-                        <div class="timeline-dot"></div>
-                        <span class="timeline-step">Phase 02</span>
-                        <h3 class="timeline-title">Neural Design</h3>
-                    </summary>
-                    <div class="timeline-content">
-                        Configuring the RAG pipeline for zero-hallucination accuracy. We engineer prompts and context windows to ensure the AI only answers from your approved data sources.
-                    </div>
-                </details>
-
-                <details class="timeline-card liquid-glass">
-                    <summary>
-                        <div class="timeline-dot"></div>
-                        <span class="timeline-step">Phase 03</span>
-                        <h3 class="timeline-title">Secure Integration</h3>
-                    </summary>
-                    <div class="timeline-content">
-                        Deploying the agent via encrypted APIs to WhatsApp or Web. Full end-to-end testing and hand-off with documentation for your internal team.
-                    </div>
-                </details>
-
-            </div>
+        <section id="pricing" class="section-padding center-align">
+             <h2 class="section-title">Transparent Investment</h2>
+             <div class="pricing-card fast-glass" data-aos="zoom-in">
+                 <h3>Enterprise Starter</h3>
+                 <div class="price">Starting at $900</div>
+                 <ul class="price-features">
+                     <li>&check; Full Business Analysis</li>
+                     <li>&check; AI Training (PDFs & Data)</li>
+                     <li>&check; WhatsApp Integration</li>
+                     <li>&check; 1 Month Support</li>
+                 </ul>
+                 <a href="#contact" class="cta-primary full-width">Get Exact Quote</a>
+             </div>
         </section>
 
         <section id="contact" class="section-padding">
-            <h2 class="section-title">Initialize Contact</h2>
-            <form class="contact-form liquid-glass" id="secure-contact-form">
-                <input type="text" name="name" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Work Email" required>
-                <textarea name="message" rows="5" placeholder="Project Requirements..." required></textarea>
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <button type="submit" class="cta-primary" id="transmit-btn" style="width:100%">Transmit Message</button>
-            </form>
+            <div class="contact-layout">
+                <div class="contact-text">
+                    <h2 class="section-title">Initialize Growth</h2>
+                    <p>Fill out the form or message us directly on WhatsApp for an immediate consultation.</p>
+                </div>
+                
+                <form class="contact-form fast-glass" id="secure-contact-form">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone" required placeholder="+961 3 000 000">
+                    </div>
+                    <div class="form-group">
+                        <label>Business Goals</label>
+                        <textarea name="message" rows="3" required placeholder="I want to automate my..."></textarea>
+                    </div>
+                    <button type="submit" class="cta-primary full-width" id="transmit-btn">Request Strategy Call</button>
+                </form>
+            </div>
         </section>
     </main>
 
-    <footer class="main-footer liquid-glass">
-        <div class="footer-links-grid">
-<div class="footer-brand-col">
-                <img src="images/QUANTEXLOGO.png" alt="Quantex" class="footer-logo">
-                <p class="footer-tagline">Engineered Intelligence.</p>
-                
-                <div class="footer-socials">
-                    <a href="https://instagram.com/Quantex.ai" target="_blank" class="social-link">
-                        <img src="images/icon-instagram.png" alt="Instagram">
-                    </a>
-                </div>
-            </div>
-            <div class="footer-column">
-                <h4>Solutions</h4>
-                <ul>
-                    <li><a href="#" onclick="document.getElementById('modal-chat-agents').showModal(); return false;">Chat Agents</a></li>
-                    <li><a href="#" onclick="document.getElementById('modal-knowledge-agents').showModal(); return false;">Enterprise RAG</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Legal</a></li>
-                </ul>
-            </div>
-        </div>
+    <div class="sticky-whatsapp-bar">
+        <a href="https://wa.me/961XXXXXXXX" target="_blank">
+            <span class="wa-icon"><img src="images/whatsapp-icon.png" alt="WA"></span>
+            <span>Chat on WhatsApp</span>
+        </a>
+    </div>
+
+    <footer class="main-footer">
         <div class="footer-bottom">
-            <p>&copy; 2025 Quantex AI Solutions.</p>
-            <p>Beirut, Lebanon</p>
+            <p>&copy; 2025 Quantex AI Solutions. Beirut, Lebanon.</p>
         </div>
     </footer>
 
-    <dialog class="modal" id="modal-chat-agents">
-        <div class="modal-content">
-            <button class="modal-close-btn" onclick="this.closest('dialog').close()">&times;</button>
-            <h3>AI Chat Agents</h3>
-            <p>Autonomous engagement engines.</p>
-            <div class="modal-specs">
-                <div class="spec-item"><span class="spec-label">Model</span><span class="spec-value">GPT-4o</span></div>
-                <div class="spec-item"><span class="spec-label">Platform</span><span class="spec-value">WhatsApp</span></div>
-            </div>
-            <hr>
-            <p>We deploy intelligent agents capable of handling multi-turn conversations with full context memory.</p>
-            <a href="#contact" class="cta-primary modal-cta" onclick="this.closest('dialog').close()">Inquire</a>
-        </div>
-    </dialog>
-    <dialog class="modal" id="modal-knowledge-agents">
-        <div class="modal-content">
-            <button class="modal-close-btn" onclick="this.closest('dialog').close()">&times;</button>
-            <h3>Enterprise Knowledge</h3>
-            <p>Secure RAG pipelines.</p>
-            <div class="modal-specs">
-                <div class="spec-item"><span class="spec-label">Security</span><span class="spec-value">AES-256</span></div>
-                <div class="spec-item"><span class="spec-label">Tech</span><span class="spec-value">Vector DB</span></div>
-            </div>
-            <hr>
-            <p>Get instant, accurate answers from your own data (SQL, PDF), all within your private network.</p>
-            <a href="#contact" class="cta-primary modal-cta" onclick="this.closest('dialog').close()">Inquire</a>
-        </div>
-    </dialog>
-    <dialog class="modal" id="modal-custom-apps">
-        <div class="modal-content">
-            <button class="modal-close-btn" onclick="this.closest('dialog').close()">&times;</button>
-            <h3>Custom Apps</h3>
-            <p>Python & React driven logic.</p>
-            <div class="modal-specs">
-                <div class="spec-item"><span class="spec-label">Backend</span><span class="spec-value">Python</span></div>
-                <div class="spec-item"><span class="spec-label">Frontend</span><span class="spec-value">React</span></div>
-            </div>
-            <hr>
-            <p>Bespoke business applications with AI at their core—from intelligent CRMs to automation tools.</p>
-            <a href="#contact" class="cta-primary modal-cta" onclick="this.closest('dialog').close()">Inquire</a>
-        </div>
-    </dialog>
-    <dialog class="modal" id="modal-web-design">
-        <div class="modal-content">
-            <button class="modal-close-btn" onclick="this.closest('dialog').close()">&times;</button>
-            <h3>Web Architecture</h3>
-            <p>Next.js high-performance sites.</p>
-            <div class="modal-specs">
-                <div class="spec-item"><span class="spec-label">Stack</span><span class="spec-value">Next.js</span></div>
-                <div class="spec-item"><span class="spec-label">3D</span><span class="spec-value">WebGL</span></div>
-            </div>
-            <hr>
-            <p>Responsive, SEO-optimized, and lightning-fast websites that embody your brand's identity.</p>
-            <a href="#contact" class="cta-primary modal-cta" onclick="this.closest('dialog').close()">Inquire</a>
-        </div>
-    </dialog>
-
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="js/app.js" defer></script>
-    <script src="js/particles.js" defer></script>
 </body>
 </html>
-
-
-
-
