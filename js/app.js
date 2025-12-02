@@ -1,121 +1,36 @@
-// js/app.js
-
-window.addEventListener('load', () => {
-    const loaderScreen = document.getElementById('loaderScreen');
-    setTimeout(() => {
-        loaderScreen.classList.add('fade-out');
-        setTimeout(() => {
-            loaderScreen.style.display = 'none';
-            initHeroTyping();
-        }, 800); 
-    }, 500);
-});
-
 document.addEventListener('DOMContentLoaded', () => {
-    AOS.init({ duration: 800, once: true, offset: 50 });
+    // 1. Initialize Scroll Animations (Subtle)
+    AOS.init({ 
+        duration: 600, 
+        once: true, 
+        offset: 30,
+        easing: 'ease-out-cubic' 
+    });
 
-    // NAV TOGGLE
+    // 2. Mobile Nav Logic
     const navToggle = document.querySelector('.nav-toggle');
     const mainNav = document.querySelector('.main-nav');
-    const closeNavBtn = document.querySelector('.mobile-close-nav');
 
     if (navToggle && mainNav) {
         navToggle.addEventListener('click', () => {
             mainNav.classList.toggle('is-open');
+            // Simple accessible toggle
             const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
             navToggle.setAttribute('aria-expanded', !isExpanded);
         });
-    }
 
-    if (closeNavBtn) {
-        closeNavBtn.addEventListener('click', () => {
-            mainNav.classList.remove('is-open');
-            navToggle.setAttribute('aria-expanded', 'false');
+        // Close when clicking a link
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
         });
     }
 
-    mainNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mainNav.classList.remove('is-open');
-            navToggle.setAttribute('aria-expanded', 'false');
-        });
-    });
-
-    // MODALS
-    const openModalLinks = document.querySelectorAll('[data-modal-target]');
-    openModalLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const modalId = link.getAttribute('data-modal-target');
-            const modal = document.getElementById(modalId);
-            if (modal && typeof modal.showModal === 'function') {
-                modal.showModal();
-            }
-        });
-    });
-
-    const closeModalButtons = document.querySelectorAll('.modal-close-btn, .modal-cta');
-    closeModalButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const modal = button.closest('dialog');
-            if (modal) modal.close();
-        });
-    });
-
-    document.querySelectorAll('dialog.modal').forEach(modal => {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.close();
-        });
-    });
-
-    // TERMINAL
-    if (document.getElementById('code-typewriter')) {
-        new Typed('#code-typewriter', {
-            strings: [
-                `<span class="code-comment"># QUANTEX CORE V2.4 - SECURE INIT</span>^500\n` +
-                `<span class="code-keyword">import</span> <span class="code-function">quantex_neural</span> <span class="code-keyword">as</span> qx\n` +
-                `<span class="code-function">encryption_layer</span> = qx.<span class="code-function">init_protocol</span>(<span class="code-string">"AES-256"</span>)\n\n` +
-                `<span class="code-keyword">async def</span> <span class="code-function">deploy_agent</span>(target_node):\n` +
-                `&nbsp;&nbsp;<span class="code-keyword">await</span> target_node.<span class="code-function">establish_uplink</span>(\n` +
-                `&nbsp;&nbsp;&nbsp;&nbsp;security=<span class="code-keyword">True</span>,\n` +
-                `&nbsp;&nbsp;&nbsp;&nbsp;latency=<span class="code-string">"ULTRA_LOW"</span>\n` +
-                `&nbsp;&nbsp;)\n` +
-                `&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">"SYSTEM ONLINE"</span>`
-            ],
-            typeSpeed: 20,
-            backSpeed: 0,
-            showCursor: true,
-            cursorChar: '█',
-            loop: false,
-            contentType: 'html'
-        });
-    }
-
-    // CLOCK (Beirut)
-    function updateClock() {
-        const clockElement = document.getElementById('utc-clock');
-        if (clockElement) {
-            const now = new Date();
-            const timeString = new Intl.DateTimeFormat('en-GB', {
-                timeZone: 'Asia/Beirut',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false
-            }).format(now);
-            clockElement.textContent = `${timeString} BEY`;
-        }
-    }
-    setInterval(updateClock, 1000);
-    updateClock(); 
-
-    // ==================================================
-    // REAL FORM SUBMISSION LOGIC
-    // ==================================================
+    // 3. Secure Contact Form Logic
     const contactForm = document.getElementById('secure-contact-form');
     const transmitBtn = document.getElementById('transmit-btn');
-
-    // >>>>> CHANGE THIS EMAIL <<<<<
     const RECIPIENT_EMAIL = "abbas@quantexai.info"; 
 
     if (contactForm && transmitBtn) {
@@ -123,74 +38,31 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault(); 
             
             const originalText = transmitBtn.innerText;
-            
-            // 1. Visual Feedback Start
-            transmitBtn.innerText = "ENCRYPTING...";
-            transmitBtn.style.opacity = "0.8";
+            transmitBtn.innerText = "Processing...";
+            transmitBtn.style.opacity = "0.7";
 
-            // 2. Gather Data
             const formData = new FormData(contactForm);
 
-            // 3. Send Data to FormSubmit.co
             fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
                 method: "POST",
                 body: formData
             })
             .then(response => response.json())
             .then(data => {
-                // 4. Visual Feedback Success
-                transmitBtn.innerText = "PACKET SENT";
-                transmitBtn.classList.add('success');
+                transmitBtn.innerText = "Request Sent Successfully";
+                transmitBtn.style.backgroundColor = "#10b981"; // Success Green
                 transmitBtn.style.opacity = "1";
+                contactForm.reset();
                 
-                // 5. Reset Form
                 setTimeout(() => {
                     transmitBtn.innerText = originalText;
-                    transmitBtn.classList.remove('success');
-                    contactForm.reset();
+                    transmitBtn.style.backgroundColor = ""; // Revert to CSS default
                 }, 4000);
             })
             .catch(error => {
                 console.error("Error:", error);
-                transmitBtn.innerText = "ERROR - RETRY";
-                setTimeout(() => {
-                    transmitBtn.innerText = originalText;
-                }, 3000);
+                transmitBtn.innerText = "Error. Please WhatsApp us.";
             });
         });
     }
-
-    // SCROLL AWARE HEADER
-    let lastScrollTop = 0;
-    const headerWrapper = document.querySelector('.header-wrapper');
-    
-    window.addEventListener('scroll', () => {
-        if (window.innerWidth >= 768) return; 
-        
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            headerWrapper.classList.add('scroll-hide');
-            mainNav.classList.remove('is-open'); 
-            navToggle.setAttribute('aria-expanded', 'false');
-        } else {
-            headerWrapper.classList.remove('scroll-hide');
-        }
-        
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    }, { passive: true });
 });
-
-function initHeroTyping() {
-    if (document.getElementById('typed-hero')) {
-        new Typed('#typed-hero', {
-            strings: ['Engineered Intelligence.'],
-            typeSpeed: 60,
-            startDelay: 0, 
-            showCursor: true,
-            cursorChar: '█',
-            loop: false,
-            onComplete: (self) => { self.cursor.style.display = 'none'; }
-        });
-    }
-}
